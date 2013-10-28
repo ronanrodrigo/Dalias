@@ -1,0 +1,10 @@
+%fieldset
+  %legend Bandas
+%ul.list-group
+  - @bands.each do |band|
+    %a.list-group-item{href: band_path(band)}
+      %h4.list-group-item-heading
+        %b= band.name
+      %p.list-group-item-text.dots= band.description
+.form-actions
+  = link_to 'Cadastrar nova banda', new_band_path, class: "btn btn-primary"

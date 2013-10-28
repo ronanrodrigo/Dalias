@@ -1,0 +1,17 @@
+---
+applications:
+  .:
+    name: dalias
+    framework:
+      name: rails3
+      info:
+        mem: 256M
+        description: Rails Application
+        exec: 
+    infra: hp
+    url: ${name}.${target-base}
+    mem: 256M
+    instances: 1
+    services:
+      dalias:
+        type: mongodb

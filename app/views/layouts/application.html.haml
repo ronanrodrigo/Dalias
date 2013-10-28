@@ -1,0 +1,19 @@
+!!!
+%html
+  %head
+    %title Dalias
+    = stylesheet_link_tag    "application", :media => "all"
+    = javascript_include_tag "application"
+    = csrf_meta_tags
+    %meta{:content => "width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0", :name => "viewport"}
+  %body
+    .jumbotron
+      .container
+        .row
+          .col-lg-12
+            %h1 Bandas do psicodalia
+            %p e seus discos para download
+    .container
+      .row
+        .col-xs-12= yield
+    %br

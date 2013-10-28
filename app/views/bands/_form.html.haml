@@ -1,0 +1,27 @@
+= simple_nested_form_for(@band, defaults: {input_html: {class: 'form-control'}}) do |f|
+  = f.error_notification
+
+  .form-group= f.input :name
+  .form-group= f.input :description, as: :text
+  .panel.panel-success
+    .panel-heading Albuns
+    = simple_nested_form_for(@band, defaults: {input_html: {class: 'form-control'}}) do |f|
+      .panel-body#album
+        = f.error_notification
+        .row
+          %label.col-xs-3.form-group Titulo
+          %label.col-xs-9.form-group Link para download
+        = f.simple_fields_for :albums do |ff|
+          .row
+            .col-xs-3.form-group= ff.input :title, label: false
+            .col-xs-9.form-group
+              .input-group
+                = ff.input :download_link, label: false
+                %span.input-group-addon
+                  = ff.link_to_remove "<i class='glyphicon glyphicon-trash'></i>".html_safe
+      .panel-footer
+        = f.link_to_add "+ 1 album", :albums, data: {target: ".panel-body#album"}, class: "btn btn-success col-xs-12"
+
+  .form-actions
+    = f.button :submit, "Cadastrar banda", class: "btn btn-primary"
+    = link_to 'Voltar', bands_path, class: "btn btn-default pull-right"

@@ -1,0 +1,26 @@
+%fieldset
+  %legend= @band.name
+.form-group= @band.description
+.panel.panel-success
+  .panel-heading Albuns
+  = simple_nested_form_for(@band, defaults: {input_html: {class: 'form-control'}}) do |f|
+    .panel-body#album
+      = f.error_notification
+      .row
+        %label.col-xs-3.form-group Titulo
+        %label.col-xs-9.form-group Link para download
+      = f.simple_fields_for :albums do |ff|
+        .row
+          .col-xs-3.form-group= ff.input :title, label: false
+          .col-xs-9.form-group
+            .input-group
+              = ff.input :download_link, label: false
+              %span.input-group-addon
+                = ff.link_to_remove "<i class='glyphicon glyphicon-trash'></i>".html_safe
+    .panel-footer
+      = f.button :submit, "Atualizar", class: "btn btn-primary"
+      = f.link_to_add "+ 1 album", :albums, data: {target: ".panel-body#album"}, class: "btn btn-success pull-right"
+.form-actions
+  = link_to 'Editar', edit_band_path(@band), class: "btn btn-primary"
+  = link_to 'Voltar', bands_path, class: "btn btn-default pull-right"
+  = link_to 'Apagar', @band, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-default pull-right hidden"
