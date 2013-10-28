@@ -1,19 +1,32 @@
 !!!
 %html
   %head
-    %title Dalias
+    %title Bandália
     = stylesheet_link_tag    "application", :media => "all"
     = javascript_include_tag "application"
     = csrf_meta_tags
     %meta{:content => "width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0", :name => "viewport"}
   %body
+    %nav.navbar.navbar-default.navbar-fixed-top
+      .navbar-header
+        %button.navbar-toggle{data: {toggle: "collapse", target: ".navbar-ex1-collapse"}}
+          %span.sr-only Mostrar menu
+          %span.icon-bar
+          %span.icon-bar
+          %span.icon-bar
+        %a.navbar-brand{href: root_path} Bandália
+      .navbar-ex1-collapse.collapse.navbar-collapse
+        %ul.nav.navbar-nav
+          %li= link_to("Cadastrar uma banda", new_band_path)
     .jumbotron
       .container
         .row
           .col-lg-12
-            %h1 Bandas do psicodalia
-            %p e seus discos para download
+            %h1.dots Bandas do Psicodália
+            %p.dots e seus discos para download
     .container
       .row
         .col-xs-12= yield
     %br
+:javascript
+  Bandalias.initialize()

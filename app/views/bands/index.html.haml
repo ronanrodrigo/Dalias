@@ -2,9 +2,18 @@
   %legend Bandas
 %ul.list-group
   - @bands.each do |band|
-    %a.list-group-item{href: band_path(band)}
+    %li.list-group-item{href: band_path(band)}
       %h4.list-group-item-heading
-        %b= band.name
-      %p.list-group-item-text.dots= band.description
+        %a{href: band_path(band)}= band.name
+      %p.list-group-item-text
+        = truncate(band.description, length: 350)
+        - if band.has_albums?
+          .form-actions
+            .btn-group
+              .btn.btn-default.btn-sm.disabled Álbuns:
+              - band.albums.each do |album|
+                = link_to(album.full_link, class: "btn btn-success btn-sm", target: "_blank") do
+                  %i.glyphicon.glyphicon-download
+                  = album.title
 .form-actions
   = link_to 'Cadastrar nova banda', new_band_path, class: "btn btn-primary"

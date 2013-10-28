@@ -2,7 +2,7 @@
   %legend= @band.name
 .form-group= @band.description
 .panel.panel-success
-  .panel-heading Albuns
+  .panel-heading Álbuns
   = simple_nested_form_for(@band, defaults: {input_html: {class: 'form-control'}}) do |f|
     .panel-body#album
       = f.error_notification
