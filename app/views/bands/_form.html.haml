@@ -12,7 +12,7 @@
           %label.col-xs-3.form-group Titulo
           %label.col-xs-9.form-group Link para download
         = f.simple_fields_for :albums do |ff|
-          .row
+          .row.test
             .col-xs-3.form-group= ff.input :title, label: false
             .col-xs-9.form-group
               .input-group
