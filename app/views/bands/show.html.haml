@@ -1,5 +1,9 @@
 %fieldset
-  %legend= @band.name
+  %legend
+    = @band.name
+    %a.btn.btn-link.btn-xs{href: @band.site, target: "_blank"}
+      Site da banda
+      %i.glyphicon.glyphicon-new-window
 .form-group= @band.description
 .panel.panel-success
   .panel-heading Álbuns
@@ -7,12 +11,12 @@
     .panel-body#album
       = f.error_notification
       .row
-        %label.col-xs-3.form-group Titulo
-        %label.col-xs-9.form-group Link para download
+        %label.col-xs-4.form-group Titulo
+        %label.col-xs-8.form-group Link para download
       = f.simple_fields_for :albums do |ff|
         .row
-          .col-xs-3.form-group= ff.input :title, label: false
-          .col-xs-9.form-group
+          .col-xs-4.form-group= ff.input :title, label: false
+          .col-xs-8.form-group
             .input-group
               = ff.input :download_link, label: false
               %span.input-group-addon

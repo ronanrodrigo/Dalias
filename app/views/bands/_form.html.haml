@@ -1,19 +1,20 @@
 = simple_nested_form_for(@band, defaults: {input_html: {class: 'form-control'}}) do |f|
   = f.error_notification
-
-  .form-group= f.input :name, input_html: {class: "input-lg form-control"}
+  .row
+    .col-xs-6.form-group= f.input :name, input_html: {class: "input-lg form-control"}
+    .col-xs-6.form-group= f.input :site, input_html: {class: "input-lg form-control"}
   .form-group= f.input :description, as: :text, input_html: {rows: 5}
   
   .form-group.panel.panel-success
     .panel-heading Álbuns
     .panel-body#album
       .row
-        %label.col-xs-7.form-group Titulo
-        %label.col-xs-5.form-group Link para download
+        %label.col-xs-4.form-group Titulo
+        %label.col-xs-8.form-group Link para download
       = f.simple_fields_for :albums do |ff|
         .row
-          .col-xs-7.form-group= ff.input :title, label: false
-          .col-xs-5.form-group
+          .col-xs-4.form-group= ff.input :title, label: false
+          .col-xs-8.form-group
             .input-group
               = ff.input :download_link, label: false
               %span.input-group-addon

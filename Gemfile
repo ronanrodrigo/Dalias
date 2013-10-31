@@ -19,3 +19,4 @@ gem 'mongoid', git: 'http://github.com/mongoid/mongoid', branch: "3.1.0-stable"
 gem 'haml'
 gem 'haml-rails'
 gem 'erb2haml'
+gem 'high_voltage'

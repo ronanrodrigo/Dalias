@@ -5,15 +5,26 @@
     %li.list-group-item{href: band_path(band)}
       %h4.list-group-item-heading
         %a{href: band_path(band)}= band.name
+        %a.btn.btn-link.btn-xs.pull-right{href: band.site, target: "_blank"}
+          Site da banda
+          %i.glyphicon.glyphicon-new-window
       %p.list-group-item-text
         = truncate(band.description, length: 350)
         - if band.has_albums?
           .form-actions
-            .btn-group
-              .btn.btn-default.btn-sm.disabled Álbuns:
-              - band.albums.each do |album|
-                = link_to(album.full_link, class: "btn btn-success btn-sm", target: "_blank") do
-                  %i.glyphicon.glyphicon-download
-                  = album.title
+            .row
+              .col-md-6.visible-xs
+                .btn-group.btn-group-justified
+                  .btn.btn-default.btn-sm.disabled Álbuns:
+                  - band.albums.each do |album|
+                    = link_to(album.full_link, class: "btn btn-success btn-sm dots", target: "_blank") do
+                      %i.glyphicon.glyphicon-download
+                      = album.title
+              .col-md-12.btn-group.hidden-xs
+                .btn.btn-default.btn-sm.disabled Álbuns:
+                - band.albums.each do |album|
+                  = link_to(album.full_link, class: "btn btn-success btn-sm dots", target: "_blank") do
+                    %i.glyphicon.glyphicon-download
+                    = album.title
 .form-actions
   = link_to 'Cadastrar nova banda', new_band_path, class: "btn btn-primary"

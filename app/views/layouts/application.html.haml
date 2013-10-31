@@ -7,6 +7,8 @@
     = csrf_meta_tags
     %meta{:content => "width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0", :name => "viewport"}
   %body
+    %a{href: "https://github.com/ronanrodrigo/dalias"}
+      %img{alt: "Fork me on GitHub", src: "http://aral.github.com/fork-me-on-github-retina-ribbons/right-orange@2x.png", style: "position: absolute; top: 0; right: 0; border: 0; width: 149px; height: 149px; z-index: 99; margin-top: 60px;"}
     %nav.navbar.navbar-default.navbar-fixed-top
       .navbar-header
         %button.navbar-toggle{data: {toggle: "collapse", target: ".navbar-ex1-collapse"}}
@@ -17,7 +19,18 @@
         %a.navbar-brand{href: root_path} Bandália
       .navbar-ex1-collapse.collapse.navbar-collapse
         %ul.nav.navbar-nav
-          %li= link_to("Cadastrar uma banda", new_band_path)
+          %li
+            = link_to(root_path) do
+              .glyphicon.glyphicon-tree-deciduous
+              Início
+          %li
+            = link_to(new_band_path) do
+              %i.glyphicon.glyphicon-headphones
+              Cadastrar uma banda
+          %li
+            = link_to page_path('about') do
+              %i.glyphicon.glyphicon-exclamation-sign
+              Sobre
     .jumbotron
       .container
         .row
